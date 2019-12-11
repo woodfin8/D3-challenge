@@ -62,9 +62,8 @@ d3.csv("data.csv").then(healthData => {
       .call(leftAxis);
 
 
-  
+
     //Create scatter plot circles
-    // ==============================
     chartGroup.selectAll("circle")
     .data(healthData)
     .enter()
@@ -72,7 +71,7 @@ d3.csv("data.csv").then(healthData => {
     .attr("cx", d => xLinearScale(d.poverty))
     .attr("cy", d => yLinearScale(d.obesity))
     .attr("r", "15")
-    .attr("fill", "blue")
+    .attr("class","stateCircle")
     .attr("opacity", ".5");
 
     //add text, need to select text.stateText to get all states to appear as axis were already called
@@ -84,34 +83,7 @@ d3.csv("data.csv").then(healthData => {
     .attr("class", "stateText")
     .text(d => d.abbr)
     .attr("x", d => xLinearScale(d.poverty))
-    .attr("y", d =>yLinearScale(d.obesity))
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "10px")
-    .attr("fill", "white");
-
-
-// selection.enter()
-//     .append("div")
-//     .classed("temps", true)
-//     .merge(selection)
-//     .style("height", function(d) {
-//       return d + "px";
-//     });
-
-
-
-    // chartGroup.selectAll("text")
-    // .data(healthData)
-    // .enter()
-    // .append("text")
-    // .text(d => d.abbr)
-    // .attr("x", d => xLinearScale(d.poverty))
-    // .attr("y", d =>yLinearScale(d.obesity))
-    // .attr("font-family", "sans-serif")
-    // .attr("font-size", "10px")
-    // .attr("fill", "white")
-    // .attr("transform", "translate(-8,4)");
-
+    .attr("y", d =>yLinearScale(d.obesity));
 
     // Create axis labels
     chartGroup.append("text")
